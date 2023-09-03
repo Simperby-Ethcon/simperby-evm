@@ -23,6 +23,11 @@ if (!infuraKey) {
   infuraKey = "9aa3d95b3bc440fa88ea12eaa4456161";
 }
 
+let endpointKey: string | undefined = process.env.INFURA_PROJECT_ID;
+if (!endpointKey) {
+  endpointKey = "026246f07c1450ab757a0e60ade132ab37c52f10";
+}
+
 let coinmarketcap_api_key: string | undefined =
   process.env.COINMARKETCAP_API_KEY;
 
@@ -46,9 +51,10 @@ module.exports = {
       url: `https://linea-goerli.infura.io/v3/${infuraKey}`,
       // accounts: ["PRVATE_KEY"],
       accounts: {
-        mnemonic: process.env.MNEMONIC,
+        mnemonic: mnemonic,
       },
     },
+    
     // arbitrum: {
     //   url: process.env.ARBITRUM_NETWORK_ENDPOINT,
     //   accounts: {
@@ -202,16 +208,22 @@ module.exports = {
     //   gasPrice: 75000000000, // 75 Gwei
     //   gasMultiplier: 1.2,
     // },
-    // polygon_mumbai: {
-    //   url: `${process.env.POLYGON_MUMBAI_NETWORK_ENDPOINT}`,
-    //   accounts: {
-    //     mnemonic: process.env.ROPSTEN_HARDHAT_PHRASE,
-    //   },
-    //   chainId: 80001,
-    //   gas: "auto",
-    //   gasPrice: 4000000000, // 4 Gwei
-    //   gasMultiplier: 1.2,
-    // },
+    polygon_mumbai: {
+      url: `https://ancient-green-aura.matic-testnet.discover.quiknode.pro/${endpointKey}/`,
+      accounts: {
+        mnemonic: mnemonic,
+      },
+      chainId: 80001,
+      gas: "auto",
+      gasPrice: 4000000000, // 4 Gwei
+      gasMultiplier: 1.2,
+    },
+    taiko: {
+      url: "https://rpc.test.taiko.xyz",
+      accounts: {
+       mnemonic: mnemonic,
+      }
+    },
     // zksync: {
     // 	url: process.env.ZKSYNC_NETWORK_ENDPOINT,
     // 	accounts: {
