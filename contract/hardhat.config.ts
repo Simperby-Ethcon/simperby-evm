@@ -42,6 +42,13 @@ module.exports = {
         mnemonic: mnemonic,
       },
     },
+    lineaTestnet: {
+      url: `https://linea-goerli.infura.io/v3/${infuraKey}`,
+      // accounts: ["PRVATE_KEY"],
+      accounts: {
+        mnemonic: process.env.MNEMONIC,
+      },
+    },
     // arbitrum: {
     //   url: process.env.ARBITRUM_NETWORK_ENDPOINT,
     //   accounts: {

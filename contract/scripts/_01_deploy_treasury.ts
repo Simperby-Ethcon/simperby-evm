@@ -9,7 +9,6 @@ async function main() {
   const signers = await ethers.getSigners();
 
   const owner = signers[0];
-
   console.log("Deploying contracts with the account:", owner.address);
 
   const Treasury = await ethers.getContractFactory("EVMTreasury");
